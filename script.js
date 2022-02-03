@@ -19,17 +19,17 @@ var config = {
 }
 var game = new Phaser.Game(config)
 function preload(){
-    this.load.image('sky','sky.png')
-    this.load.image('bomb','bomb.png')
-    this.load.image('platform','platform.png')
-    this.load.image('star','star.png')
-    this.load.spritesheet('dude','dude.png',{
+    this.load.image('sky','assets/sky.png')
+    this.load.image('bomb','assets/bomb.png')
+    this.load.image('platform','assets/platform.png')
+    this.load.image('star','assets/star.png')
+    this.load.spritesheet('dude','assets/dude.png',{
         frameWidth:32,frameHeight:48
     })
 }
 function create(){
     this.anims.create({
-        key:"a, left",
+        key:"left",
         frames:this.anims.generateFrameNumbers('dude',{
             start:0,end:3
         }),
@@ -37,7 +37,7 @@ function create(){
         repeat:-1
     })
     this.anims.create({
-        key:"d, right",
+        key:"right",
         frames:this.anims.generateFrameNumbers('dude',{
             start:5,end:8
         }),
@@ -61,7 +61,7 @@ function create(){
     player = this.physics.add.sprite(100,450,'dude')
     player.setCollideWorldBounds(true)
     this.physics.add.collider(player,platforms)
-    player.setBounce(875)
+    player.setBounce(.1)
     cursors= this.input.keyboard.createCursorKeys()
     stars=this.physics.add.group({
         key:'star',
